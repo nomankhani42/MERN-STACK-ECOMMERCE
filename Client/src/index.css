@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.slider-container{
+    height: 80vh;
+    width: 99vw;
+}
+
+.carosel-item{
+    height:76vh;
+    background-color: aqua;
+}
+
+.carosel-item img{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+@media screen and (width<800px) {
+    .slider-container{
+        height: 54vh;
+    }
+    .carosel-item{
+        height:50vh;
+    }
+}
+
+
+
+  
