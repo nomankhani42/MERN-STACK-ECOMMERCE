@@ -27,7 +27,7 @@ export const createOrder = async (req, res) => {
     const session = await Stripe.checkout.sessions.create({
       line_items: line_items,
       mode: "payment",
-      success_url: `https://5a82f805-8187-4bd0-9e3b-b82c4adf42fd-00-19l7o1y6ssb2a.pike.replit.dev/success?success=true&order_id=${order._id} `, // Replace with your success URL
+      success_url: `https://mern-stack-ecommerce-self.vercel.app//success?success=true&order_id=${order._id} `, // Replace with your success URL
       cancel_url: 'https://yourdomain.com/cancel', // Replace with your cancel URL
     });
 
