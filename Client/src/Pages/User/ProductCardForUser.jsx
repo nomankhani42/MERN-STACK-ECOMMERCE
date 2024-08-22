@@ -10,11 +10,11 @@ const ProductCardForUser = ({data}) => {
     <div className=' xl:col-span-3 p-3 cursor-pointer md:col-span-4 col-span-6 transition-all duration-1000' >
           <div className=' border-[1px] shadow-md'>
                 <div>
-                <img className=' h-[250px] w-full block m-auto' src={`/api/product//get-product-photo/${data._id}`} alt="" />
+                <img className=' md:h-[250px] h-[150px] w-full block m-auto' src={`/api/product//get-product-photo/${data._id}`} alt="" />
 
                 </div>
                 <div>
-                    <h2 className='h-10 text-xl text-center font-semibold'>{data.title}</h2>
+                    <h2 className='md:h-10 md:text-xl  text-center font-semibold'>{data.title}</h2>
                     <p className='px-3 text-center py-2'>{data.description.substring(0,25)} ..</p>
                 </div>
                 <div className='flex items-center justify-around'>
