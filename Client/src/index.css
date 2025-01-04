@@ -29,6 +29,14 @@
         height:50vh;
     }
 }
+@media screen and (width<600px) {
+    .slider-container{
+        height: 40vh;
+    }
+    .carosel-item{
+        height:38vh;
+    }
+}
 
 
 

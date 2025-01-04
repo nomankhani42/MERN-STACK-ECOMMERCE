@@ -2,7 +2,7 @@
   "name": "mern_ecommerce",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "https://mern-stack-ecommerce-self.vercel.app",
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@reduxjs/toolkit": "^2.2.3",

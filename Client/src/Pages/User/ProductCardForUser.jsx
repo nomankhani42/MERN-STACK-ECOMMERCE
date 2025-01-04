@@ -3,39 +3,62 @@ import { IoStarSharp } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../Redux/Cart/CartSlice';
 
-const ProductCardForUser = ({data}) => {
+const ProductCardForUser = ({ data }) => {
+  const dispatch = useDispatch();
 
-   const dispatch=useDispatch();
   return (
-    <div className=' xl:col-span-3 p-3 cursor-pointer md:col-span-4 col-span-6 transition-all duration-1000' >
-          <div className=' border-[1px] shadow-md'>
-                <div>
-                <img className=' md:h-[250px] h-[150px] w-full block m-auto' src={`/api/product//get-product-photo/${data._id}`} alt="" />
+    <div className="p-4 xl:col-span-3 md:col-span-4 sm:col-span-6 col-span-12 cursor-pointer transition-transform transform hover:scale-105">
+      <div className="border rounded-lg shadow-lg hover:shadow-xl overflow-hidden bg-white">
+        {/* Product Image */}
+        <div className="relative">
+          <img
+            className="w-full h-48 md:h-60 object-cover"
+            src={`/api/product/get-product-photo/${data._id}`}
+            alt={data.title}
+          />
+        </div>
 
-                </div>
-                <div>
-                    <h2 className='md:h-10 md:text-xl  text-center font-semibold'>{data.title}</h2>
-                    <p className='px-3 text-center py-2'>{data.description.substring(0,25)} ..</p>
-                </div>
-                <div className='flex items-center justify-around'>
-                    <div className=' flex gap-[2px]'>
-                    <IoStarSharp className=' text-yellow-300' />
-                    <IoStarSharp className=' text-yellow-300' />
-                    <IoStarSharp className=' text-yellow-300' />
-                    <IoStarSharp className=' text-yellow-300' />
-                    <IoStarSharp className=' ' />
-                    </div>
-                    <span>55 Reviews</span>
-                </div>
-                <div className=' mx-auto my-2'>
-                    <h5 className='font-semibold text-center'>$<span className=' line-through px-3'>{(data.price+5).toFixed(2)}</span> <span>{data.price}</span></h5>
-                </div>
-                <div>
-                    <button onClick={()=>dispatch(addToCart({...data,quantity:1}))} className=' w-[80%] text-white bg-black py-2 rounded font-semibold my-2 block mx-auto'>Add to Cart</button>
-                </div>
+        {/* Product Info */}
+        <div className="p-4">
+          <h2 className="text-lg md:text-xl font-semibold text-center truncate" title={data.title}>
+            {data.title}
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base text-center mt-2">
+            {data.description.substring(0, 50)}...
+          </p>
+        </div>
+
+        {/* Rating and Reviews */}
+        <div className="flex items-center justify-center gap-2 py-2">
+          <div className="flex gap-1 text-yellow-400">
+            {[...Array(4)].map((_, i) => (
+              <IoStarSharp key={i} />
+            ))}
+            <IoStarSharp className="text-gray-300" />
           </div>
+          <span className="text-gray-500 text-sm">55 Reviews</span>
+        </div>
+
+        {/* Price Section */}
+        <div className="text-center my-2">
+          <span className="text-gray-500 text-sm line-through mr-2">
+            ${(data.price + 5).toFixed(2)}
+          </span>
+          <span className="text-black font-bold text-lg">${data.price}</span>
+        </div>
+
+        {/* Add to Cart Button */}
+        <div className="px-4 pb-4">
+          <button
+            onClick={() => dispatch(addToCart({ ...data, quantity: 1 }))}
+            className="w-full bg-black text-white py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductCardForUser;
